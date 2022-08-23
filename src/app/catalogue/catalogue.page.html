@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button menu="first">
+
+      </ion-menu-button>
+  </ion-buttons>
+    <ion-title>catalogue</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide>
+    <img src="assets/mBurger.png" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="assets/menu.png" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="assets/mcoca.png" alt="">
+  </ion-slide>
+</ion-slides>
+<ion-segment >
+  <ion-segment-button  value="friends" >
+    <ion-button (ionChange)="infor('burger')" >Burger</ion-button><!--(ionChange)="segmentChanged($event)"-->
+  </ion-segment-button>
+  <ion-segment-button value="enemies">
+    <ion-label (click)="infor('menu')" >Menu</ion-label>
+  </ion-segment-button>
+</ion-segment>
+  <ion-card *ngFor="let item of produits">
+    <img src="data:image/png;base64,{{item.image}}" />
+    
+    <ion-card-header>
+      <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
+      <ion-card-title>{{item.prix}}Fcfa</ion-card-title>
+    </ion-card-header>
+    <button ion-button icon-only >
+      <ion-icon name="star" routerLink="/detail/{{item.id}}"></ion-icon>
+    </button>
+   
+  </ion-card>
+</ion-content>
+
+
