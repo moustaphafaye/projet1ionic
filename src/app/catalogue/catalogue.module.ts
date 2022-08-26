@@ -7,11 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { CataloguePageRoutingModule } from './catalogue-routing.module';
 
 import { CataloguePage } from './catalogue.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    
     IonicModule,
     CataloguePageRoutingModule
   ],

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="new-background-color">
     <ion-buttons>
       <ion-menu-button menu="first">
 
@@ -8,37 +8,42 @@
     <ion-title>catalogue</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   
 <ion-slides pager="true" [options]="slideOpts">
+  
   <ion-slide>
-    <img src="assets/mBurger.png" alt="">
+    <img src="assets/boo.webp" alt="">
   </ion-slide>
   <ion-slide>
-    <img src="assets/menu.png" alt="">
-  </ion-slide>
-  <ion-slide>
-    <img src="assets/mcoca.png" alt="">
+    <img src="assets/bo.webp" alt="">
   </ion-slide>
 </ion-slides>
-<ion-segment >
-  <ion-segment-button  value="friends" >
-    <ion-button (ionChange)="infor('burger')" >Burger</ion-button><!--(ionChange)="segmentChanged($event)"-->
-  </ion-segment-button>
-  <ion-segment-button value="enemies">
-    <ion-label (click)="infor('menu')" >Menu</ion-label>
-  </ion-segment-button>
-</ion-segment>
+<!--<ion-button (click)="infor('burger')">burgers</ion-button>-->
+
+    <ion-button color="warning"  (click)="infor('burger')">Burger</ion-button>
+  
+    <ion-button color="warning" (click)="infor('menu')">Menu</ion-button>
+  
+    <ion-label> Prix : {{ lastEmittedValue }} .00  Fcfa</ion-label>
+    <ion-range [max]="10000" [min]="1000" (ionChange)="onIonChange($event)"></ion-range>
   <ion-card *ngFor="let item of produits">
-    <img src="data:image/png;base64,{{item.image}}" />
-    
+   <!-- <img src="data:image/png;base64,{{item.image}}" />-->
+    <ion-img src="data:image/png;base64,{{item.image}}"></ion-img>
     <ion-card-header>
       <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
       <ion-card-title>{{item.prix}}Fcfa</ion-card-title>
-    </ion-card-header>
-    <button ion-button icon-only >
-      <ion-icon name="star" routerLink="/detail/{{item.id}}"></ion-icon>
-    </button>
+    </ion-card-header> 
+    <div> 
+      <ion-button color="warning" routerLink="/detail/{{item.id}}">
+      <ion-icon name="alert-circle-outline" ></ion-icon>
+
+      </ion-button>
+
+    </div>
+      
+  
    
   </ion-card>
 </ion-content>

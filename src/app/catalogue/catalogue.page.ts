@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Catalogue } from '../shared/model/Catalogue';
 import { Produit } from '../shared/model/Produit';
+import { RangeCustomEvent } from '@ionic/angular';
+import { RangeValue } from '@ionic/core';
+import { filter } from 'rxjs/operators';
+
 import { CatalogueService } from '../shared/services/catalogue.service';
 
 @Component({
@@ -12,8 +16,20 @@ import { CatalogueService } from '../shared/services/catalogue.service';
 export class CataloguePage implements OnInit {
   catalogues : Catalogue|undefined=undefined; 
   produits: Produit[]|undefined=undefined
+  lastEmittedValue: RangeValue;
+
   constructor(private catalogue:CatalogueService,public router: Router) { }
 
+  onIonChange(ev: Event) {
+    this.lastEmittedValue = (ev as RangeCustomEvent).detail.value;
+    console.log(this.lastEmittedValue);
+    this.catalogue.all().subscribe((data)=>{
+      this.catalogues =data
+      this.produits=this.catalogues?.produits.filter(prod=>prod.prix <= this.lastEmittedValue)
+      // console.log(this.produits);
+      
+   });
+  }
   ngOnInit() {
     this.catalogue.all().subscribe((data)=>{
       this.catalogues =data
@@ -23,6 +39,8 @@ export class CataloguePage implements OnInit {
    });
    
   }
+
+  
   
   dou(){
     alert('ok')
@@ -33,11 +51,11 @@ export class CataloguePage implements OnInit {
     switch (kony) {
       case "burger":
 
-        this.catalogue.all().subscribe((data)=>{
-            this.catalogues=data
+        
+            
             this.produits=this.catalogues.burger
             
-        })
+       
           
         break;
         case "menu":

@@ -1,0 +1,35 @@
+<ion-header >
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="catalogue"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    
+     
+    
+    <ion-title>listcommande</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>list Command</ion-list-header>
+<!--<ion-list *ngFor="let item of  listcommande">
+
+   </ion-list>-->
+   
+   <ion-searchbar></ion-searchbar>
+   <ion-button (click)="tousMesCommande()">Historique</ion-button>
+   <ng-container *ngIf="listcommande!=undefined">
+   <ion-list *ngFor="let item of  listcommande">
+    
+    <ion-item [routerLink]="['detailcommande/',item.id]" detail  >
+    <ion-label >
+    <h2>N° : {{item.nCommande}}   Etat : {{item.etat}}</h2>
+    <p> Date : {{item.date}}</p>
+    </ion-label >
+    </ion-item  >
+    
+    </ion-list>
+  </ng-container>
+</ion-content>

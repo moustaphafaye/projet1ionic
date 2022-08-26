@@ -2,3 +2,13 @@
     --width: 10em;
     
 }
+.new-background-color{
+    --background: #f1b707;
+}
+.taille{
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+ion-tabs ion-tab-button ion-icon .new-background-color{
+    --background: #f1b707;
+}

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="catalogue"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding="true">
+  <div>
+    <img src="assets/burger12.jpg" alt="">
+    <h1>Sign In</h1>
+  </div>
+  <form action="" [formGroup]="userFormGroup" (ngSubmit)="handerlogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input autocomplete="off" formControlName="login" name="login" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input autocomplete="off" formControlName="password" name="password" type="password"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <ion-button expand="block" share="round" type="submit" (click)="gettoken()" color="success" >Connexion</ion-button>
+  </form>
+
+  <ion-item>
+    <a routerLink="">Create Account</a>
+  </ion-item>
+</ion-content>

@@ -21,7 +21,7 @@ export class DetailPage implements OnInit {
     //console.log(this.mba.getProduit(1))
     this.catalogue.getProduit(id).subscribe((data)=>{
       this.produits=data
-      console.log(this.produits);
+      // console.log(this.produits);
     })
     
     
