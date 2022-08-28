@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="catalogue" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button class="top" expand="full" color="secondary" color="warning">Info de la Commande</ion-button>
+  <div class="tops" *ngIf="detailcommande!=undefined">
+  <ion-row >
+    <ion-col col-4>
+     <h4>{{detailcommande.client.prenom}}</h4>
+    </ion-col>
+    <ion-col col-4>
+      <h4>{{detailcommande.client.nom}}</h4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-label >Tel : {{detailcommande.client.telephone}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <hr style="border-bottom: groove;">
+  <ion-row >
+    
+    <ion-col col-4>
+     <h4>Montant commande :</h4>
+    </ion-col>
+    <ion-col col-4>
+      <h4>{{detailcommande.montant}} Fcfa</h4>
+    </ion-col>
+  </ion-row>
+  <hr style="border-bottom: groove;">
+  <ion-row >
+    <ion-col col-4>
+      <h4>Prix livraison</h4>
+    </ion-col>
+    <ion-col col-4>
+      <h4>{{detailcommande.zone.prix}} Fcfa</h4>
+    </ion-col>
+    <ion-col col-4>
+      <h4>{{detailcommande.zone.nom}}</h4>
+    </ion-col>
+  </ion-row>
+</div>
+ <dir class="centre" >
+ <h2>Total commande</h2>
+       <h4>{{Total}} Fcfa</h4> 
+      </dir>
+
+</ion-content>

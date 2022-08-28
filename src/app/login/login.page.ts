@@ -34,33 +34,14 @@ export class LoginPage implements OnInit {
       console.log(data);
       this.auth.valuetoken(data.token,data.id)
 
-      // const letoken=this.auth.getDecodedAccessToken(data.token)
-      //     // console.log(letoken);
-      //     const a=data.id
-          
-      //     if(letoken.roles[0]==='ROLE_CLIENT'){
-      //         console.log(a);
-      //         this.router.navigate(['clients/'+a+'/commandes'])
-      //         this.toastservice.presentToast('login ou mot de pass incorrect !!!')
-
-      //       }else if(( letoken.roles[0]==='')){
-      //         this.toastservice.presentToast('login ou mot de pass incorrect !!!')
-      //           console.log('pas de connexion');
-                
-      //       }else{
-
-      //       }
-      //       console.log(data.token);
-            
-      //       this.storag.set('token',data.token)
       
     })
   }
- async gettoken() {
-    let tokens= await this.storage.get('token')
-    console.log(tokens);
-    return tokens
+//  async gettoken() {
+//     let tokens= await this.storage.get('token')
+//     console.log(tokens);
+//     return tokens
     
-  }
+//   }
 
 }

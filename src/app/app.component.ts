@@ -1,4 +1,5 @@
 import { Component,  } from '@angular/core';
+import { AuthentificationService } from './shared/services/authentification.service';
 // import { Storage } from '@ionic/storage';
 // import { AuthentificationService } from './shared/services/authentification.service';
 // import { StorageService } from './shared/services/storage.service';
@@ -9,17 +10,27 @@ import { Component,  } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent  {
-  // private a=undefined
-  // constructor(public storage: Storage,private storages:StorageService,private auth:AuthentificationService) {}
-  // ngOnInit(): void {
-  //   this.a =this.storages.gettoken()
-  //   // console.log(this.a);
-  //   const letoken=this.auth.getDecodedAccessToken(this.a)
-  //           if(letoken.roles[0]==='ROLE_GESTIONNAIRE'){
-  //             console.log(letoken);
-              
-  //           }
-  // }
+  connexion:boolean=false
+  role:string=''
+  constructor(private auth:AuthentificationService) {}
+   ngOnInit(): void {
+
+    this.auth.IsConnecter.asObservable().subscribe((data)=>{
+      console.log(data);
+      
+      this.connexion=data
+    })
+    this.auth.Role.asObservable().subscribe((datas)=>{
+      // console.log(data);
+      this.role=datas
+      
+    })
+}
+
+  deconnecter(){
+    this.auth.IsConnecter.next(false)
+  }
+  
 //  private tokens=''
    
    

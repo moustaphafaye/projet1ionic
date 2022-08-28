@@ -13,6 +13,8 @@ import { StorageService } from './storage.service';
 export class AuthentificationService {
   private urllogin="http://localhost:8000/api/login"
   private _storage: Storage | null = null;
+  IsConnecter:BehaviorSubject<boolean> =  new BehaviorSubject(false);
+  Role:BehaviorSubject<any> =  new BehaviorSubject('');
 
   constructor(  private storag:StorageService,private toastservice:ToastService,private http:HttpClient, private router: Router) { }
 
@@ -21,24 +23,28 @@ export class AuthentificationService {
   } 
 
   valuetoken(token:string,a:any):void{
-      let gettok=this.getDecodedAccessToken(token)
+      let get_token=this.getDecodedAccessToken(token)
       this.IsConnecter.next(true)
       
-      if(gettok.roles[0]==='ROLE_CLIENT'){
+      if(get_token.roles[0]==='ROLE_CLIENT'){
         // console.log(a);
+        this.Role.next('ROLE_CLIENT')
         this.router.navigate(['clients/'+a+'/commandes'])
         this.toastservice.presentToast('login ou mot de pass incorrect !!!')
-
-      }else {
+        
+      }else  if(get_token.roles[0]==='ROLE_LIVREUR'){
+        this.Role.next('ROLE_LIVREUR')
+        this.router.navigate(['/livraison'])
         this.toastservice.presentToast('login ou mot de pass incorrect !!!')
-          console.log('pas de connexion');
+          // console.log('pas de connexion');
           
+      }else{
+
       }
       this.storag.set('token',token)
   }
    
 
-  IsConnecter:BehaviorSubject<boolean> =  new BehaviorSubject(false);
   // items$ = this.itemsSubject.asObservable();
 
   

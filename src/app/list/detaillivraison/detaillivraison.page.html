@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  ></ion-back-button>
+    </ion-buttons>
+    <ion-title>detaillivraison</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of  tableaux">
+    
+    <ion-item [routerLink]="['detail-commande-livraison/',item.id]" detail  >
+    <ion-label >
+    <h2>N° : {{item.nCommande}}   Etat : {{item.etat}}</h2>
+    <p> Date : {{item.date}}</p>
+    </ion-label >
+    </ion-item  >
+    
+    </ion-list>
+</ion-content>

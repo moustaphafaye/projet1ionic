@@ -3,6 +3,7 @@ export interface DetailsCommande{
     nCommande:string
     date:string
     montant:number
+    client:Client
     commandeburger:Commandeburger[]
     commandemenu:Commandemenu[]
     zone:zone
@@ -13,6 +14,13 @@ export interface Commandeburger{
         id:number
         quantite:number
         burger:produit
+}
+export interface Client{
+    id:number
+    adresse:string
+    telephone:string
+    nom:string
+    prenom:string
 }
 export interface Commandemenu{
     id:number
@@ -28,4 +36,5 @@ export interface produit{
 export interface zone{
     id:number
     nom:string
+    prix:number
 }

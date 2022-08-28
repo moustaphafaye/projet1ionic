@@ -8,11 +8,14 @@
     </ion-header>
     <ion-content class="new-background-color">
       <ion-list >
-        <ion-item routerLink="login" class="new-background-color"><ion-icon name="person-add-outline" class="taille"></ion-icon><h3>Connexion</h3> </ion-item>
+        <ion-menu-toggle>
+        <ion-item routerLink="login" *ngIf="!connexion" class="new-background-color"><ion-icon name="person-add-outline" class="taille"></ion-icon><h3>Connexion</h3> </ion-item>
+        <ion-item routerLink="login" *ngIf="connexion" (click)="deconnecter()" class="new-background-color"><ion-icon name="person-add-outline" class="taille"></ion-icon><h3>Deconnexion</h3> </ion-item>
         <ion-item routerLink="" class="new-background-color"><ion-icon name="cart-outline" class="taille"></ion-icon><h3>Panier</h3> </ion-item>
-        <ion-item routerLink="" class="new-background-color"> <ion-icon name="bag-check-outline" class="taille"></ion-icon><h3>Mes Commandes</h3></ion-item>
+        <ion-item routerLink=""*ngIf="connexion && role=='ROLE_CLIENT'" class="new-background-color"> <ion-icon name="bag-check-outline" class="taille"></ion-icon><h3>Mes Commandes</h3></ion-item>
+        <ion-item routerLink="/livraison"*ngIf="connexion && role=='ROLE_LIVREUR'" class="new-background-color"> <ion-icon name="bag-check-outline" class="taille"></ion-icon><h3>Livraison</h3></ion-item>
         <ion-item routerLink="" class="new-background-color"><ion-icon name="logo-apple-ar" class="taille"></ion-icon><h3>Catalogue</h3> </ion-item>
-        
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -22,14 +25,14 @@
 
   <ion-tabs >
     <ion-tab-bar slot="bottom" >
-      <ion-tab-button tab="schedule"  >
+      <ion-tab-button tab="schedule" routerLink="/catalogue" >
         <ion-icon name="logo-apple-ar" color="warning"></ion-icon>
         <ion-label color="warning" >Catalogue</ion-label>
       </ion-tab-button>
   
-      <ion-tab-button tab="speakers">
+      <ion-tab-button tab="speakers" *ngIf="connexion && role=='ROLE_CLIENT'">
         <ion-icon name="bag-check-outline"  color="warning"></ion-icon>
-        <ion-label color="warning" >Mes Commandes</ion-label>
+        <ion-label color="warning"  >Mes Commandes</ion-label>
       </ion-tab-button>
   
      

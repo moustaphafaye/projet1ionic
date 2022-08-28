@@ -16,7 +16,20 @@ const routes: Routes = [
   {
     path: 'clients/:id/commandes/detailcommande/:id',
     loadChildren: () => import('./list/detailcommande/detailcommande.module').then( m => m.DetailcommandePageModule)
-  }
+  },
+  {
+    path: 'livraison',
+    loadChildren: () => import('./list/livraison/livraison.module').then( m => m.LivraisonPageModule)
+  },
+  {
+    path: 'livraison/detaillivraison/:id',
+    loadChildren: () => import('./list/detaillivraison/detaillivraison.module').then( m => m.DetaillivraisonPageModule)
+  },
+  {
+    path: 'livraison/detaillivraison/:id/detail-commande-livraison/:id',
+    loadChildren: () => import('./list/detail-commande-livraison/detail-commande-livraison.module').then( m => m.DetailCommandeLivraisonPageModule)
+  },
+  
   
 ];
 
