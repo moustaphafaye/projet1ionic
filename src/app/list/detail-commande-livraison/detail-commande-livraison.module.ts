@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { DetailCommandeLivraisonPageRoutingModule } from './detail-commande-livraison-routing.module';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { DetailCommandeLivraisonPage } from './detail-commande-livraison.page';
 
@@ -12,6 +13,7 @@ import { DetailCommandeLivraisonPage } from './detail-commande-livraison.page';
   imports: [
     CommonModule,
     FormsModule,
+    QRCodeModule,
     IonicModule,
     DetailCommandeLivraisonPageRoutingModule
   ],

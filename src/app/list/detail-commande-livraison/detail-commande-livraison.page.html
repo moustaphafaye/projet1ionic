@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-button class="top" expand="full" color="secondary" color="warning">Info de la Commande</ion-button>
   <div class="tops" *ngIf="detailcommande!=undefined">
   <ion-row >
@@ -43,9 +43,28 @@
     </ion-col>
   </ion-row>
 </div>
- <dir class="centre" >
- <h2>Total commande</h2>
-       <h4>{{Total}} Fcfa</h4> 
-      </dir>
-
+  <dir class="centre" >
+      <h2>Total commande</h2>
+            <h4>{{Total}} Fcfa</h4> 
+    </dir>
+    
+ <!-- <div >
+    
+    <ion-button expand="block"  >
+      <ion-icon slot="start" name="qr-scanner"></ion-icon>
+      Scanner un QR Code
+    </ion-button>
+  </div>-->
+  <div >
+     
+      <ion-button color="tertiary" expand="block"  >
+        <ion-icon slot="start" name="create"></ion-icon>
+        Votre QR Code
+      </ion-button>
+      <div class="center" >
+        <!--*ngIf="myAngularxQrCode"-->
+        <qrcode class="qrcode" [qrdata]="'Votre chaîne de caractère QR code'" size="256" level="'M'"></qrcode> 
+      </div>
+    </div>
+    
 </ion-content>

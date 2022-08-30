@@ -5,3 +5,10 @@ ion-card button{
 .new-background-color{
     --background: #f1b707;
 }
+.justify{
+    display: flex;
+    justify-content: space-between;
+}
+.ion_button{
+    width: 5em;
+}

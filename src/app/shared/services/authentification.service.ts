@@ -15,6 +15,7 @@ export class AuthentificationService {
   private _storage: Storage | null = null;
   IsConnecter:BehaviorSubject<boolean> =  new BehaviorSubject(false);
   Role:BehaviorSubject<any> =  new BehaviorSubject('');
+  id:BehaviorSubject<number> =  new BehaviorSubject(0);
 
   constructor(  private storag:StorageService,private toastservice:ToastService,private http:HttpClient, private router: Router) { }
 
@@ -29,6 +30,7 @@ export class AuthentificationService {
       if(get_token.roles[0]==='ROLE_CLIENT'){
         // console.log(a);
         this.Role.next('ROLE_CLIENT')
+        this.id.next(a)
         this.router.navigate(['clients/'+a+'/commandes'])
         this.toastservice.presentToast('login ou mot de pass incorrect !!!')
         

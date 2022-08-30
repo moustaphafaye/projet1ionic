@@ -21,7 +21,6 @@
   </ion-slide>
 </ion-slides>
 <!--<ion-button (click)="infor('burger')">burgers</ion-button>-->
-
     <ion-button color="warning"  (click)="infor('burger')">Burger</ion-button>
   
     <ion-button color="warning" (click)="infor('menu')">Menu</ion-button>
@@ -35,11 +34,13 @@
       <ion-card-subtitle>{{item.nom}}</ion-card-subtitle>
       <ion-card-title>{{item.prix}}Fcfa</ion-card-title>
     </ion-card-header> 
-    <div> 
-      <ion-button color="warning" routerLink="/detail/{{item.id}}">
+    <div class="justify"> 
+      <ion-button class="ion_button" color="warning" routerLink="/detail/{{item.id}}">
       <ion-icon name="alert-circle-outline" ></ion-icon>
-
       </ion-button>
+      <ion-button class="ion_button" color="warning" routerLink="">
+        <ion-icon name="cart-outline" ></ion-icon>
+        </ion-button>
 
     </div>
       

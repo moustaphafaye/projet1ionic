@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { PipeservicePipe } from './shared/services/pipeservice.pipe';
+import { QRScanner,QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
+ 
 
 
 @NgModule({
@@ -22,6 +25,10 @@ import { PipeservicePipe } from './shared/services/pipeservice.pipe';
 
   ],
   providers: [
+    // StatusBar,
+    // SplashScreen,
+    QRScanner,
+    
     { provide: RouteReuseStrategy,
        useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

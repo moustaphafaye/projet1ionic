@@ -22,7 +22,7 @@ export class ListcommandePage implements OnInit {
       data.forEach((element:any)=>{
         if(element.etat==='En cours'){
          this.listcommande.push(element)
-         console.log( this.listcommande);
+        //  console.log( this.listcommande);
         }
       })
     })

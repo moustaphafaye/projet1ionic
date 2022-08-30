@@ -12,6 +12,7 @@ import { AuthentificationService } from './shared/services/authentification.serv
 export class AppComponent  {
   connexion:boolean=false
   role:string=''
+  idd:number
   constructor(private auth:AuthentificationService) {}
    ngOnInit(): void {
 
@@ -24,6 +25,11 @@ export class AppComponent  {
       // console.log(data);
       this.role=datas
       
+    })
+    this.auth.id.asObservable().subscribe((data)=>{
+      console.log(data);
+      
+      this.idd=data
     })
 }
 
