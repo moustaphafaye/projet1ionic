@@ -7,6 +7,7 @@ import { RangeValue } from '@ionic/core';
 import { filter } from 'rxjs/operators';
 
 import { CatalogueService } from '../shared/services/catalogue.service';
+import { PanierService } from '../shared/services/panier.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -18,7 +19,7 @@ export class CataloguePage implements OnInit {
   produits: Produit[]|undefined=undefined
   lastEmittedValue: RangeValue;
 
-  constructor(private catalogue:CatalogueService,public router: Router) { }
+  constructor(private catalogue:CatalogueService,public router: Router,private panierservice:PanierService) { }
 
   onIonChange(ev: Event) {
     this.lastEmittedValue = (ev as RangeCustomEvent).detail.value;
@@ -30,6 +31,13 @@ export class CataloguePage implements OnInit {
       
    });
   }
+
+
+  product(koni:any){
+    this.panierservice.addToCart(koni)
+}
+
+
   ngOnInit() {
     this.catalogue.all().subscribe((data)=>{
       this.catalogues =data

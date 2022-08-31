@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <div >
      
     <ion-button color="tertiary" expand="block"  >
@@ -16,7 +16,60 @@
     </ion-button>
     <div class="center" >
       <!--*ngIf="myAngularxQrCode"-->
-      <qrcode class="qrcode"  id="open-modal" expand="block" [qrdata]="'Votre chaîne de caractère QR code'" size="256" level="'M'"></qrcode> 
+      <qrcode class="qrcode"  id="open-modal" expand="block" [qrdata]="'Votre chaîne de caractère QR code'" size="256" level="'M'"></qrcode>
+      
+
+    </div>
+    <div>
+      <header>
+        <select >
+          <option value="" [selected]="!currentDevice">No Device Selected</option>
+          <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{ device.label }}</option>
+            </select>
+      </header>
+      
+      
+      <zxing-scanner #scanner start="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)" [formats]=""></zxing-scanner>
+
+      <section class="results" *ngIf="qrResultString">
+        <small>Result</small>
+        <strong>{{ qrResultString }}</strong>
+      </section>
+      <ng-container *ngIf="hasPermission === undefined">
+
+        <h2>Waiting for permissions.</h2>
+      
+        <blockquote>
+          If your device does not has cameras, no permissions will be asked.
+        </blockquote>
+      
+      </ng-container>
+      
+      
+      
+     
+      
+      <footer>
+        <table class="table-scanner-state">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Property</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ stateToEmoji(hasDevices) }}</td>
+              <td>Devices</td>
+            </tr>
+            <tr>
+              <td>{{ stateToEmoji(hasPermission) }}</td>
+              <td>Permissions</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="ng-version">Angular version: {{ ngVersion }}</p>
+      </footer>
     </div>
   </div>
   
@@ -36,7 +89,8 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        dfghjklm
+
+
       </ion-content>
     </ng-template>
   </ion-modal>

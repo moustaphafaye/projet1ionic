@@ -8,6 +8,7 @@ import { DetailCommandeLivraisonPageRoutingModule } from './detail-commande-livr
 import { QRCodeModule } from 'angularx-qrcode';
 
 import { DetailCommandeLivraisonPage } from './detail-commande-livraison.page';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { DetailCommandeLivraisonPage } from './detail-commande-livraison.page';
     IonicModule,
     DetailCommandeLivraisonPageRoutingModule
   ],
+  providers :[QRScanner],
   declarations: [DetailCommandeLivraisonPage]
 })
 export class DetailCommandeLivraisonPageModule {}

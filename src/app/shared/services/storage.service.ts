@@ -30,4 +30,15 @@ export class StorageService {
     return tokens
     
   }
+
+  async getProduit() {
+    let produit= await this.storage.get('produit')
+    console.log(produit);
+    if(produit){
+      return produit
+    }else{
+      return []
+    }
+    
+  }
 }

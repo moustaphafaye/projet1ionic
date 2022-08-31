@@ -13,6 +13,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 export class DetailCommandeLivraisonPage implements OnInit {
   detailcommande:DetailsCommande
   Total:any
+  chaine:string
   // public textToCode:string
   // public showCamera = false;
   // public myAngularxQrCode: string = null;
@@ -21,19 +22,29 @@ export class DetailCommandeLivraisonPage implements OnInit {
   constructor(private qrScanner: QRScanner,private storageservice:StorageService, private servicecommande:CommandeService,private route:ActivatedRoute,) {
     
    }
-
+   idcommande:any
+   idclient:any
  async ngOnInit() {
+  
   const id =this.route.snapshot.params['id'];
   console.log(id);
   // console.log( this.scancode());
-  
+   
   let  token= await this.storageservice.gettoken()
-      this.servicecommande.getCommande(id,token).subscribe((data)=>{
+      this.servicecommande.getCommande(id,token).subscribe(data=>{
         this.detailcommande=data
          console.log(this.detailcommande);
-        this.Total=(this.detailcommande.montant)+(this.detailcommande.zone.prix)
+         this.idcommande=this.detailcommande.id
+         console.log(this.idcommande);
+         this.idclient=this.detailcommande.client.id
+         console.log(this.idclient);
+         
+         
+        // this.Total=(this.detailcommande.montant)+(this.detailcommande.zone.prix)
+        this.chaine=JSON.stringify(this.detailcommande)
+        
       })
-
+      
   }
   // createQRCode() {
   //   this.myAngularxQrCode = this.textToCode;

@@ -5,8 +5,8 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="ion-padding">
+  
   <ion-button class="top" expand="full" color="secondary" color="warning">Info de la Commande</ion-button>
   <div class="tops" *ngIf="detailcommande!=undefined">
   <ion-row >
@@ -55,6 +55,7 @@
       Scanner un QR Code
     </ion-button>
   </div>-->
+  
   <div >
      
       <ion-button color="tertiary" expand="block"  >
@@ -63,7 +64,7 @@
       </ion-button>
       <div class="center" >
         <!--*ngIf="myAngularxQrCode"-->
-        <qrcode class="qrcode" [qrdata]="'Votre chaîne de caractère QR code'" size="256" level="'M'"></qrcode> 
+        <qrcode class="qrcode" qrdata={{idcommande}}  size="256" level="'M'"></qrcode> 
       </div>
     </div>
     

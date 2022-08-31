@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PanierService } from 'src/app/shared/services/panier.service';
 
 @Component({
   selector: 'app-panier',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierPage implements OnInit {
 
-  constructor() { }
-
+  constructor(private panierservicd:PanierService) { }
+  valeur$:Observable<any>= this.panierservicd.items$
+  
   ngOnInit() {
+    console.log(this.valeur$);
   }
 
 }
