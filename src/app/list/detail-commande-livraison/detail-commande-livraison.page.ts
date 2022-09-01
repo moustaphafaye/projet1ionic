@@ -24,6 +24,9 @@ export class DetailCommandeLivraisonPage implements OnInit {
    }
    idcommande:any
    idclient:any
+   idsomme:number
+   infoCommande:object
+  //  idcommande:number
  async ngOnInit() {
   
   const id =this.route.snapshot.params['id'];
@@ -33,15 +36,23 @@ export class DetailCommandeLivraisonPage implements OnInit {
   let  token= await this.storageservice.gettoken()
       this.servicecommande.getCommande(id,token).subscribe(data=>{
         this.detailcommande=data
-         console.log(this.detailcommande);
-         this.idcommande=this.detailcommande.id
-         console.log(this.idcommande);
-         this.idclient=this.detailcommande.client.id
-         console.log(this.idclient);
+        
+        //  console.log(this.detailcommande);
+        //  this.idcommande=this.detailcommande.id
+        //  console.log(this.idcommande);
+        //  this.idclient=this.detailcommande.client.id
          
-         
+        //  this.idsomme=(this.idcommande) + (this.idclient)
+        //  console.log(this.idsomme);
+          
+         this.infoCommande={
+            id_commande:this.detailcommande.id,
+            id_client:this.detailcommande.client.id
+        }
+        console.log(this.infoCommande);
+        
         // this.Total=(this.detailcommande.montant)+(this.detailcommande.zone.prix)
-        this.chaine=JSON.stringify(this.detailcommande)
+        this.chaine=JSON.stringify(this.infoCommande)
         
       })
       

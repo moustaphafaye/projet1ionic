@@ -34,10 +34,10 @@ export class PanierService {
     this.items$.pipe(
       take(1),
       map((products) => {
-        console.log(products);
         
-        // products.push(product);
-        this.storageservice.set('produit',product)
+        products.push(product);
+        console.log(products);
+        this.storageservice.set('produit',products)
         // localStorage.setItem('produit', JSON.stringify(products));
       }),
     ).subscribe();

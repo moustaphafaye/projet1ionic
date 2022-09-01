@@ -1,8 +1,8 @@
 import { Component, OnInit, VERSION ,ViewChild } from '@angular/core';
 import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 import { IonModal } from '@ionic/angular';
-import { Result } from '@zxing/library';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { Result } from '@zxing/library';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 @Component({
   selector: 'app-clientscanner',

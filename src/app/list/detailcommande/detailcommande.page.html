@@ -61,4 +61,59 @@
    <h3>Total: {{produit$.montant}}   Fcfa</h3> 
 </ng-container>
 </ng-container>
+<ion-button color="tertiary" expand="block"  >
+  <ion-icon slot="start" name="create"></ion-icon>
+  Votre QR Code
+</ion-button>
+
+<div>
+  <zxing-scanner  [enable]="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)" ></zxing-scanner>
+<!--#scanner start="true"-->
+  <section class="results" *ngIf="qrResultString">
+    <small>Result</small>
+    <strong>{{ qrResultString }}</strong>
+  </section>
+  <!--<ng-container *ngIf="hasPermission === undefined">
+
+    <h2>Waiting for permissions.</h2>
+  
+    <blockquote>
+      If your device does not has cameras, no permissions will be asked.
+    </blockquote>
+  
+  </ng-container>-->
+  
+  
+  
+
+  
+  <footer>
+    <table class="table-scanner-state">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Property</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ stateToEmoji(hasDevices) }}</td>
+          <td>Devices</td>
+        </tr>
+        <tr>
+          <td>{{ stateToEmoji(hasPermission) }}</td>
+          <td>Permissions</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="ng-version">Angular version: {{ ngVersion }}</p>
+  </footer>
+</div>
+
+
+
+
+<div class="center" >
+  <qrcode class="qrcode"  id="open-modal" expand="block" qrdata={{idClient}} size="256" level="'M'"></qrcode>
+</div>
 </ion-content>

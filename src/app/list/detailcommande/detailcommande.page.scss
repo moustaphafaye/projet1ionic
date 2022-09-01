@@ -7,3 +7,47 @@
   ion-col {
     border: 1px solid #ECEEEF;
   }
+  .top{
+    // border-radius: 20px;
+    margin-top: 10px;
+}
+.tops{
+    border: solid orange 5px;
+    margin-top: 20px;
+}
+.centre{
+    // display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: orange;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: orange;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex   ;
+    padding: 5px;
+    align-content: center;
+    // width: 250px;
+//     left: 0;
+//   right: 0;
+//   top: 50%;
+}
+
+
+// ion-content {
+//     --ion-background-color: transparent;
+// }
+.frame {
+    color: #d5d5d5;
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}

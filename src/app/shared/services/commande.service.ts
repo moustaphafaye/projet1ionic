@@ -12,6 +12,8 @@ export class CommandeService {
   constructor(private http:HttpClient,private storageservice:StorageService) { }
   private urllistcommande:string="http://localhost:8000/api/commandes"
   private urlcommande1client:string = "http://localhost:8000/api/clients"
+  private urlcommande:string="http://localhost:8000/api/commandes"
+
 
   
   listcommande(token:string):Observable<any>{
@@ -55,5 +57,16 @@ export class CommandeService {
        return datas
      })
     )
+  }
+
+
+  modifierCommande(id:number,token:string){
+    let httpOptions={
+      headers: new HttpHeaders({
+        'Content-type' : 'application/json',
+        'Authorization' : `Bearer ${token}`
+      })
+    }
+      this.http.put<any>(this.urlcommande+"/"+id,{etat:'Valider'},httpOptions).subscribe();
   }
 }
